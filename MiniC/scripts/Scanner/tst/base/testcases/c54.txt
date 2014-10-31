@@ -1,4 +1,0 @@
-/*
- * this is a multi-line
- * comment which is unterminated.
-
