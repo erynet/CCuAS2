@@ -14,7 +14,7 @@ public class Parser {
     private Token currentToken;
 
     public Parser(Scanner lexer, ErrorReporter reporter) {
-	scanner = lexer;
+    	scanner = lexer;
         errorReporter = reporter;
     }
 
@@ -22,34 +22,34 @@ public class Parser {
     // If so, it fetches the next token.
     // If not, it reports a syntax error.
     void accept (int tokenExpected) throws SyntaxError {
-	if (currentToken.kind == tokenExpected) {
-	    currentToken = scanner.scan();
-	} else {
-	    syntaxError("\"%\" expected here", Token.spell(tokenExpected));
-	}
+    	if (currentToken.kind == tokenExpected) {
+    		currentToken = scanner.scan();
+		} else {
+		    syntaxError("\"%\" expected here", Token.spell(tokenExpected));
+		}
     }
 
     // acceptIt() unconditionally accepts the current token
     // and fetches the next token from the scanner.
     void acceptIt() {
-	currentToken = scanner.scan();
+    	currentToken = scanner.scan();
     }
 
     void syntaxError(String messageTemplate, String tokenQuoted) throws SyntaxError {
-	SourcePos pos = currentToken.GetSourcePos();
-	errorReporter.reportError(messageTemplate, tokenQuoted, pos);
-	throw(new SyntaxError());
+		SourcePos pos = currentToken.GetSourcePos();
+		errorReporter.reportError(messageTemplate, tokenQuoted, pos);
+		throw(new SyntaxError());
     }
 
     boolean isTypeSpecifier(int token) {
-	if(token == Token.VOID ||
+    	if(token == Token.VOID ||
            token == Token.INT  ||
            token == Token.BOOL ||
            token == Token.FLOAT) {
-	    return true;
-	} else {
-	    return false;
-	}
+    		return true;
+		} else {
+		    return false;
+		}
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -60,17 +60,17 @@ public class Parser {
 
     public void parse() {
 
-	currentToken = scanner.scan(); // get first token from scanner...
-
-	try {
-	    parseProgram();
-	    if (currentToken.kind != Token.EOF) {
-		syntaxError("\"%\" not expected after end of program",
-			       currentToken.GetLexeme());
-	    }
-	}
-	catch (SyntaxError s) {return; /* to be refined in Assignment 3...*/ }
-	return;
+		currentToken = scanner.scan(); // get first token from scanner...
+	
+		try {
+		    parseProgram();
+		    if (currentToken.kind != Token.EOF) {
+			syntaxError("\"%\" not expected after end of program",
+				       currentToken.GetLexeme());
+		    }
+		}
+		catch (SyntaxError s) {return; /* to be refined in Assignment 3...*/ }
+		return;
     }
 
     
@@ -83,15 +83,15 @@ public class Parser {
     ///////////////////////////////////////////////////////////////////////////////
 
     public void parseProgram() throws SyntaxError {
-	while (isTypeSpecifier(currentToken.kind)) {
-            acceptIt();
-	    accept(Token.ID);
-	    if(currentToken.kind == Token.LEFTPAREN) {
-		parseFunPart();
-	    } else {
-		parseVarPart();
-	    }
-	}
+		while (isTypeSpecifier(currentToken.kind)) {
+	        acceptIt();
+		    accept(Token.ID);
+		    if(currentToken.kind == Token.LEFTPAREN) {
+		    	parseFunPart();
+		    } else {
+		    	parseVarPart();
+		    }
+		}
     }
 
 
@@ -108,10 +108,10 @@ public class Parser {
         // Otherwise use accept() !
         acceptIt();
         if (isTypeSpecifier(currentToken.kind)) {
-	    parseParamsList();
-	}
-	accept(Token.RIGHTPAREN);
-	parseCompoundStmt();
+		    parseParamsList();
+		}
+		accept(Token.RIGHTPAREN);
+		parseCompoundStmt();
     }
 
 
@@ -124,7 +124,9 @@ public class Parser {
     ///////////////////////////////////////////////////////////////////////////////
 
     public void parseParamsList() throws SyntaxError {
-	// to be completed by you...
+    	// to be completed by you...
+    	acceptIt();
+    	parseParameterDecl();
 
     } 
 
