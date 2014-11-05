@@ -106,13 +106,13 @@ public class Parser {
     public void parseFunPart() throws SyntaxError {
         // We already know that the current token is "(".
         // Otherwise use accept() !
-		// "(" params-list? “)” compound-stmt
+		// "(" params-list? ")" compound-stmt
         acceptIt();
-		// params-list? “)” compound-stmt
+		// params-list? ")" compound-stmt
         if (isTypeSpecifier(currentToken.kind)) {
 		    parseParamsList();
 		}
-		// “)” compound-stmt
+		// ")" compound-stmt
 		accept(Token.RIGHTPAREN);
 		// compound-stmt
 		parseCompoundStmt();
@@ -129,8 +129,8 @@ public class Parser {
 
     public void parseParamsList() throws SyntaxError {
     	// to be completed by you...
-    	acceptIt();
-    	parseParameterDecl();
+    	//acceptIt();
+    	//parseParameterDecl();
 
     } 
 
@@ -145,12 +145,19 @@ public class Parser {
 
     public void parseCompoundStmt() throws SyntaxError {
 		// to be completed by you...
-		// “{” variable-def* stmt* “}”
+		// "{" variable-def* stmt* "}"
 		accept(Token.LEFTBRACE);
-		// variable-def* stmt* “}”
+		// variable-def* stmt* "}"
+		while (isTypeSpecifier(currentToken.kind)) {
+			parseVarPart();
+		}
+		// stmt* "}"
+		while () {
+			parseStmt();
+		}
 		
 		
-		// “}”
+		// "}"
 		accept(Token.RIGHTBRACE);
 		//
 
