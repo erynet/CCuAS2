@@ -641,7 +641,6 @@ public class Parser {
     		break;
     	default:
     		throw(new SyntaxError());
-    		break;
     	}
     }
 }
