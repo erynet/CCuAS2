@@ -53,17 +53,20 @@ public class Parser {
     }
     
     boolean isExpr(int token) {
-    	if(token == Token.ID ||
-           token == Token.LEFTPAREN ||
-           token == Token.INTLITERAL ||
-           token == Token.BOOLLITERAL ||
-           token == Token.FLOATLITERAL ||
-           token == Token.STRINGLITERAL) {
-    		return true;
-    	} else {
-    		return false;
+    	if(token == Token.PLUS ||
+    			token == Token.MINUS ||
+    			token == Token.NOT ||
+    			token == Token.ID ||
+    			token == Token.LEFTPAREN ||
+    			token == Token.INTLITERAL ||
+    			token == Token.BOOLLITERAL ||
+    			token == Token.FLOATLITERAL ||
+    			token == Token.STRINGLITERAL) {
+    			return true;
+    		} else {
+    			return false;
+    		}
     	}
-    }
     
     boolean isStmt(int token) {
     	if(token == Token.LEFTBRACE ||
