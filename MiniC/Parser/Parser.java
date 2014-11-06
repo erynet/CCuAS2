@@ -54,19 +54,19 @@ public class Parser {
     
     boolean isExpr(int token) {
     	if(token == Token.PLUS ||
-    			token == Token.MINUS ||
-    			token == Token.NOT ||
-    			token == Token.ID ||
-    			token == Token.LEFTPAREN ||
-    			token == Token.INTLITERAL ||
-    			token == Token.BOOLLITERAL ||
-    			token == Token.FLOATLITERAL ||
-    			token == Token.STRINGLITERAL) {
-    			return true;
-    		} else {
-    			return false;
-    		}
-    	}
+			token == Token.MINUS ||
+			token == Token.NOT ||
+			token == Token.ID ||
+			token == Token.LEFTPAREN ||
+			token == Token.INTLITERAL ||
+			token == Token.BOOLLITERAL ||
+			token == Token.FLOATLITERAL ||
+			token == Token.STRINGLITERAL) {
+			return true;
+		} else {
+			return false;
+		}
+	}
     
     boolean isStmt(int token) {
     	if(token == Token.LEFTBRACE ||
@@ -244,13 +244,13 @@ public class Parser {
     	accept(Token.ID);
     	
     	//  | "[" INTLITERAL "]"
-    	if (currentToken.kind == Token.LEFTPAREN) {
+    	if (currentToken.kind == Token.LEFTBRACKET) {
     		// "[" INTLITERAL "]"
     		acceptIt();
     		// INTLITERAL "]"
     		accept(Token.INTLITERAL);
     		// "]"
-    		accept(Token.RIGHTPAREN);
+    		accept(Token.RIGHTBRACKET);
     	}
     	
     }
