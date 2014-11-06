@@ -560,7 +560,7 @@ public class Parser {
 		// declarator (“=” initializer)? 
 		parseDeclarator();
 		// (“=” initializer)?
-		if (currentToken.kind = Token.ASSIGN) {
+		if (currentToken.kind == Token.ASSIGN) {
 			// (“=” initializer)?
 			acceptIt();
 			// initializer)?
@@ -578,7 +578,7 @@ public class Parser {
 	
 	public void parseExpr() throws SyntaxError {
 		parseTerminalExpr();
-		while (isOp(currentToken.kind)) {
+		while (isOP(currentToken.kind)) {
 			acceptIt();
 			parseTerminalExpr();
 		}
@@ -631,7 +631,7 @@ public class Parser {
     	case Token.LEFTPAREN:
     		acceptIt();
     		parseExpr();
-    		accept(Token,RIGHTPAREN);
+    		accept(Token.RIGHTPAREN);
     		break;
     	case Token.BOOLLITERAL:
     	case Token.INTLITERAL:
