@@ -252,7 +252,6 @@ public class Parser {
     		// "]"
     		accept(Token.RIGHTBRACKET);
     	}
-    	
     }
     
     ///////////////////////////////////////////////////////////////////////////////
@@ -341,8 +340,7 @@ public class Parser {
 				parseExpr();
 				// ";"
 				accept(Token.SEMICOLON);
-			}
-			else if (currentToken.kind == Token.LEFTBRACKET) {
+			} else if (currentToken.kind == Token.LEFTBRACKET) {
 				// "[" expr "]" "=" expr ";"
 				acceptIt();
 				// expr "]" "=" expr ";"
@@ -355,8 +353,7 @@ public class Parser {
 				parseExpr();
 				// ";"
 				accept(Token.SEMICOLON);
-			}
-			else if (currentToken.kind == Token.LEFTPAREN) {
+			} else {
 				// “(“ args? “)” ; 
 				parseArglist();
 				// ;
