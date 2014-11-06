@@ -426,7 +426,7 @@ public class Parser {
     	// for "(" asgnexpr? ";" expr? ";" asgnexpr ? ")" stmt
     	acceptIt();
     	// "(" asgnexpr? ";" expr? ";" asgnexpr ? ")" stmt
-    	aceept(Token.LEFTPAREN);
+    	accept(Token.LEFTPAREN);
     	// asgnexpr? ";" expr? ";" asgnexpr ? ")" stmt
     	if (currentToken.kind == Token.ID) {
     		acceptIt();
@@ -579,7 +579,7 @@ public class Parser {
 	public void parseExpr() throws SyntaxError {
 		parseTerminalExpr();
 		while (isOp(currentToken.kind)) {
-			aceeptIt();
+			acceptIt();
 			parseTerminalExpr();
 		}
 		
