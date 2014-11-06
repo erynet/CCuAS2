@@ -453,6 +453,27 @@ public class Parser {
     	parseStmt();
     }
 
+    
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // parseArglist():
+    //
+    // Arglist ::= "(" args? ")"
+	// Args ::= expr ( "," expr) *
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+	
+    public void parseArglist() throws SyntaxError {
+    	accept(Token.LEFTPAREN);
+    	if (isExpr(currentToken.kind)) {
+    		parseExpr();
+    		while (currentToken.kind == Token.COMMA) {
+    			acceptIt();
+    			parseExpr();
+    		}
+    	}
+    	accept(Token.RIGHTPAREN);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////
     //
