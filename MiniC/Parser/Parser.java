@@ -524,7 +524,7 @@ public class Parser {
 	///////////////////////////////////////////////////////////////////////////////
 	
 	public void parseInitializer() throws SyntaxError {
-		/*
+		
 		if (isExpr(currentToken.kind)) {
 			// expr
 			parseExpr();
@@ -545,7 +545,8 @@ public class Parser {
 		} else {
 			throw(new SyntaxError());
 		}
-		*/
+		
+		/*
 		if (currentToken.kind == Token.LEFTBRACE) {
 			acceptIt();
 			parseExpr();
@@ -558,6 +559,7 @@ public class Parser {
 		} else {
 			parseExpr();
 		}
+		*/
 	}
 	
 	
