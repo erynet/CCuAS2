@@ -493,7 +493,6 @@ public class Parser {
     	accept(Token.SEMICOLON);
     }
     // to be completed by you...
-}
 
 	///////////////////////////////////////////////////////////////////////////////
 	//
@@ -546,7 +545,6 @@ public class Parser {
 			// initializer)?
 			parseInitializer();
 		}
-		
 	}
 	
 	
