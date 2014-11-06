@@ -509,7 +509,6 @@ public class Parser {
     		parseInitDecl();
     		// ";"
     	}
-    	
     	// ";"
     	accept(Token.SEMICOLON);
     }
@@ -525,6 +524,7 @@ public class Parser {
 	///////////////////////////////////////////////////////////////////////////////
 	
 	public void parseInitializer() throws SyntaxError {
+		/*
 		if (isExpr(currentToken.kind)) {
 			// expr
 			parseExpr();
@@ -544,6 +544,19 @@ public class Parser {
 			accept(Token.RIGHTBRACE);
 		} else {
 			throw(new SyntaxError());
+		}
+		*/
+		if (currentToken.kind == Token.LEFTBRACE) {
+			acceptIt();
+			parseExpr();
+			while(currentToken.kind == Token.COMMA)
+			{
+				acceptIt();
+				parseExpr();
+			}
+			accept(Token.RIGHTBRACE);
+		} else {
+			parseExpr();
 		}
 	}
 	
@@ -640,7 +653,8 @@ public class Parser {
     		acceptIt();
     		break;
     	default:
-    		throw(new SyntaxError());
+    		//throw(new SyntaxError());
+    		break;
     	}
     }
 }
