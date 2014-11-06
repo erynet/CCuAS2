@@ -38,7 +38,6 @@ JC = javac
 SRC = \
         MiniC.java \
         ErrorReporter.java \
-        Scanner/Scanner.java \
         Scanner/SourceFile.java \
         Scanner/SourcePos.java \
         Scanner/Token.java \
